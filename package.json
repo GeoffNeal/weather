@@ -1,0 +1,7 @@
+{
+  "name": "collinson",
+  "packageManager": "yarn@4.10.3",
+  "devDependencies": {
+    "typescript": "^5.9.2"
+  }
+}
