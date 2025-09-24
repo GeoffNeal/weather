@@ -1,7 +1,24 @@
 {
   "name": "collinson",
   "packageManager": "yarn@4.10.3",
+  "scripts": {
+    "test": "echo Not implemented",
+    "lint": "eslint --fix",
+    "build": "tsc",
+    "start": "yarn build && node ./dist",
+    "postinstall": "husky || true"
+  },
   "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@typescript-eslint/eslint-plugin": "^8.44.1",
+    "@typescript-eslint/parser": "^8.44.1",
+    "eslint": "^9.36.0",
+    "eslint-config-prettier": "^10.1.8",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.0",
+    "pinst": "^3.0.0",
+    "prettier": "^3.6.2",
     "typescript": "^5.9.2"
   }
 }
