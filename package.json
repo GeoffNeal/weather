@@ -11,11 +11,15 @@
     "lint": "eslint --fix",
     "build": "webpack",
     "start": "yarn build && node dist/server/server.bundle.js",
+    "codegen": "graphql-codegen --config codegen.ts",
     "postinstall": "husky || true"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
+    "@graphql-codegen/cli": "^6.0.0",
+    "@graphql-codegen/typescript": "^5.0.0",
+    "@graphql-codegen/typescript-resolvers": "^5.0.0",
     "@types/jest": "^30.0.0",
     "@types/node": "^24.5.2",
     "@typescript-eslint/eslint-plugin": "^8.44.1",

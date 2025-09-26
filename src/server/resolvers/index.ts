@@ -1,6 +1,8 @@
+import type { Activities, Recommendation } from '../../generated/gql';
+
 const resolvers = {
   Query: {
-    recommendations: (_, { activities }: { activities: string[] }) => {
+    recommendations: (_, { activities }: { activities: Activities[] }): Recommendation[] => {
       const response = [
         { key: 'SKIING', ranking: 10.0 },
         { key: 'SURFING', ranking: 90.0 },
