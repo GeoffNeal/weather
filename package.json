@@ -9,8 +9,8 @@
   "scripts": {
     "test": "jest",
     "lint": "eslint --fix",
-    "build": "tsc",
-    "start": "yarn build && node ./dist",
+    "build": "webpack",
+    "start": "yarn build && node dist/server/server.bundle.js",
     "postinstall": "husky || true"
   },
   "devDependencies": {
@@ -28,6 +28,13 @@
     "pinst": "^3.0.0",
     "prettier": "^3.6.2",
     "ts-jest": "^29.4.4",
-    "typescript": "^5.9.2"
+    "ts-loader": "^9.5.4",
+    "typescript": "^5.9.2",
+    "webpack": "^5.101.3",
+    "webpack-cli": "^6.0.1"
+  },
+  "dependencies": {
+    "@apollo/server": "^5.0.0",
+    "graphql": "^16.11.0"
   }
 }
