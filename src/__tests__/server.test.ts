@@ -5,38 +5,66 @@ import assert from 'assert';
 import typeDefs from '../server/typeDefs';
 import resolvers from '../server/resolvers';
 
+// Data sources
+import WeatherAPI from '../server/dataSources/WeatherAPI';
+
+jest.mock('../server/dataSources/WeatherAPI');
+
 const getRecommendations = `#graphql
-  query GetRecommendations($activities: [Activities]!) {
-    recommendations(activities: $activities) {
+  query GetRecommendations($input: RecommendationsInput!) {
+    recommendations(input: $input) {
       key
       ranking
     }
   }
 `;
 
+const input1 = {
+  input: {
+    coordinates: {
+      lat: 52.52,
+      lon: 13.41,
+    },
+    activities: ['SKIING', 'SURFING'],
+  },
+};
+
+const input2 = {
+  input: {
+    coordinates: {
+      lat: 52.52,
+      lon: 13.41,
+    },
+    activities: ['INDOOR_SIGHTSEEING', 'OUTDOOR_SIGHTSEEING'],
+    days: '10',
+  },
+};
+
 const recommendationsQueryExpectedResponse1 = [
-  { key: 'SKIING', ranking: 10.0 },
-  { key: 'SURFING', ranking: 90.0 },
+  { key: 'SURFING', ranking: 456 },
+  { key: 'SKIING', ranking: 123 },
 ];
 
 const recommendationsQueryExpectedResponse2 = [
-  { key: 'OUTDOOR_SIGHTSEEING', ranking: 90.0 },
-  { key: 'INDOOR_SIGHTSEEING', ranking: 10.0 },
+  { key: 'OUTDOOR_SIGHTSEEING', ranking: 999 },
+  { key: 'INDOOR_SIGHTSEEING', ranking: 789 },
 ];
 
 describe('Server', () => {
+  const weatherAPI = new WeatherAPI();
+
   test.each([
     [
       'skiing and surfing',
       {
-        variables: { activities: ['SKIING', 'SURFING'] },
+        variables: input1,
         expected: recommendationsQueryExpectedResponse1,
       },
     ],
     [
       'outdoor and indoor activities',
       {
-        variables: { activities: ['OUTDOOR_SIGHTSEEING', 'INDOOR_SIGHTSEEING'] },
+        variables: input2,
         expected: recommendationsQueryExpectedResponse2,
       },
     ],
@@ -46,10 +74,19 @@ describe('Server', () => {
       resolvers,
     });
 
-    const response = await testServer.executeOperation({
-      query: getRecommendations,
-      variables,
-    });
+    const response = await testServer.executeOperation(
+      {
+        query: getRecommendations,
+        variables,
+      },
+      {
+        contextValue: {
+          dataSources: {
+            weatherAPI,
+          },
+        },
+      }
+    );
 
     assert(response.body.kind === 'single');
     expect(response.body.singleResult.errors).toBeUndefined();

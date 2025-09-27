@@ -2,7 +2,7 @@ import { resolve as _resolve } from 'path';
 
 const __dirname = new URL('.', import.meta.url).pathname;
 
-/*We are basically telling webpack to take index.js from entry. Then check for all file extensions in resolve. 
+/* We are basically telling webpack to take index.js from entry. Then check for all file extensions in resolve. 
 After that apply all the rules in module.rules and produce the output and place it in main.js in the public folder.*/
 const config = {
   mode: 'development',
@@ -11,11 +11,11 @@ const config = {
   },
   output: {
     /** "path"
-     * the folder path of the output file
+     * The folder path of the output file
      */
     path: _resolve(__dirname, 'dist/server'),
     /** "filename"
-     * the name of the output file
+     * The name of the output file
      * here [name] represents the name
      * of the chunk as determined by
      * `entry`. For example, the `server`
@@ -23,7 +23,7 @@ const config = {
      */
     filename: '[name].bundle.js',
     /** "chunkFormat"
-     * lets webpack know to output the chunks
+     * Lets webpack know to output the chunks
      * as es modules. This is only possible
      * because we have set `experiments.outputModule`
      * to true
@@ -32,14 +32,14 @@ const config = {
   },
   experiments: {
     /** "outputModule"
-     * as es modules are still experimental
+     * As es modules are still experimental
      * in webpack we need to explicitly tell
      * the compiler that we want this feature
      */
     outputModule: true,
   },
   /** "target"
-   * in this case we want to target
+   * In this case we want to target
    * the node environment, as we are
    * not going to use this in the browser
    */

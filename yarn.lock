@@ -14,6 +14,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@apollo/datasource-rest@npm:^6.4.1":
+  version: 6.4.1
+  resolution: "@apollo/datasource-rest@npm:6.4.1"
+  dependencies:
+    "@apollo/utils.fetcher": "npm:^3.0.0"
+    "@apollo/utils.keyvaluecache": "npm:^3.1.0"
+    "@apollo/utils.logger": "npm:^3.0.0"
+    "@apollo/utils.withrequired": "npm:^3.0.0"
+    "@types/http-cache-semantics": "npm:^4.0.1"
+    http-cache-semantics: "npm:^4.1.1"
+    lodash.clonedeep: "npm:^4.5.0"
+    lodash.isplainobject: "npm:^4.0.6"
+    node-fetch: "npm:^2.6.7"
+  peerDependencies:
+    graphql: ^16.5.0
+  checksum: 10c0/f85136323d8bd76519f5dfb77165e8815f8cf9d238bf05b41785657b07eefe8a54ecfe2fbf8647eccf00cf722b638ccc791c468a5a9063a94bc160c8fd351fe9
+  languageName: node
+  linkType: hard
+
 "@apollo/protobufjs@npm:1.2.7":
   version: 1.2.7
   resolution: "@apollo/protobufjs@npm:1.2.7"
@@ -120,6 +139,16 @@ __metadata:
   version: 3.0.0
   resolution: "@apollo/utils.isnodelike@npm:3.0.0"
   checksum: 10c0/d1e1acb3f3454a6b0043ad020c0e96ad6dd22a547e8232ab1f0da81e08bb8cde5d6d9612c9da38a9525f199ea089a298ae8d8f0f84f1aa1c630853a6b252af32
+  languageName: node
+  linkType: hard
+
+"@apollo/utils.keyvaluecache@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "@apollo/utils.keyvaluecache@npm:3.1.0"
+  dependencies:
+    "@apollo/utils.logger": "npm:^3.0.0"
+    lru-cache: "npm:^10.0.0"
+  checksum: 10c0/aea41af9f8df0218577ba656bfbb51b3125bf03ead2688f002106050d454c0f634bea449610d705d80926620bada4516423d3fd7381f4020655aabb1ea93109d
   languageName: node
   linkType: hard
 
@@ -2516,6 +2545,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/http-cache-semantics@npm:^4.0.1":
+  version: 4.0.4
+  resolution: "@types/http-cache-semantics@npm:4.0.4"
+  checksum: 10c0/51b72568b4b2863e0fe8d6ce8aad72a784b7510d72dc866215642da51d84945a9459fa89f49ec48f1e9a1752e6a78e85a4cda0ded06b1c73e727610c925f9ce6
+  languageName: node
+  linkType: hard
+
 "@types/istanbul-lib-coverage@npm:*, @types/istanbul-lib-coverage@npm:^2.0.1, @types/istanbul-lib-coverage@npm:^2.0.6":
   version: 2.0.6
   resolution: "@types/istanbul-lib-coverage@npm:2.0.6"
@@ -3803,6 +3839,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "collinson@workspace:."
   dependencies:
+    "@apollo/datasource-rest": "npm:^6.4.1"
     "@apollo/server": "npm:^5.0.0"
     "@commitlint/cli": "npm:^19.8.1"
     "@commitlint/config-conventional": "npm:^19.8.1"
@@ -6308,6 +6345,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lodash.clonedeep@npm:^4.5.0":
+  version: 4.5.0
+  resolution: "lodash.clonedeep@npm:4.5.0"
+  checksum: 10c0/2caf0e4808f319d761d2939ee0642fa6867a4bbf2cfce43276698828380756b99d4c4fa226d881655e6ac298dd453fe12a5ec8ba49861777759494c534936985
+  languageName: node
+  linkType: hard
+
 "lodash.isplainobject@npm:^4.0.6":
   version: 4.0.6
   resolution: "lodash.isplainobject@npm:4.0.6"
@@ -6451,7 +6495,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lru-cache@npm:^10.0.1, lru-cache@npm:^10.2.0":
+"lru-cache@npm:^10.0.0, lru-cache@npm:^10.0.1, lru-cache@npm:^10.2.0":
   version: 10.4.3
   resolution: "lru-cache@npm:10.4.3"
   checksum: 10c0/ebd04fbca961e6c1d6c0af3799adcc966a1babe798f685bb84e6599266599cd95d94630b10262f5424539bc4640107e8a33aa28585374abf561d30d16f4b39fb
@@ -6797,7 +6841,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"node-fetch@npm:^2.7.0":
+"node-fetch@npm:^2.6.7, node-fetch@npm:^2.7.0":
   version: 2.7.0
   resolution: "node-fetch@npm:2.7.0"
   dependencies:

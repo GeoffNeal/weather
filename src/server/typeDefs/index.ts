@@ -13,11 +13,22 @@ const typeDefs = `#graphql
         ranking: Float!
     }
 
+    input Coordinates {
+        lat: Float
+        lon: Float
+    }
+
+    input RecommendationsInput {
+        coordinates: Coordinates!
+        activities: [Activities!]!
+        days: String
+    }
+
     # The "Query" type is special: it lists all of the available queries that
     # clients can execute, along with the return type for each. In this
     # case, the "books" query returns an array of zero or more Books (defined above).
     type Query {
-        recommendations(activities: [Activities]!): [Recommendation]
+        recommendations(input: RecommendationsInput!): [Recommendation]
     }
 `;
 

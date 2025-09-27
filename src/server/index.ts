@@ -4,15 +4,28 @@ import { startStandaloneServer } from '@apollo/server/standalone';
 // Types and resolvers
 import typeDefs from './typeDefs';
 import resolvers from './resolvers';
+import WeatherAPI from './dataSources/WeatherAPI';
 
-// Export for testing
-export const server = new ApolloServer({
+export interface ApolloContext {
+  dataSources: {
+    weatherAPI: WeatherAPI;
+  };
+}
+
+const server = new ApolloServer<ApolloContext>({
   typeDefs,
   resolvers,
 });
 
 const { url } = await startStandaloneServer(server, {
   listen: { port: 4000 },
+  context: async () => {
+    return {
+      dataSources: {
+        weatherAPI: new WeatherAPI(),
+      },
+    };
+  },
 });
 
 // eslint-disable-next-line no-console

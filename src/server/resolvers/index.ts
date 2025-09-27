@@ -1,15 +1,21 @@
-import type { Activities, Recommendation } from '../../generated/gql';
+import { ApolloContext } from '..';
+import type { Recommendation, Resolvers } from '../../generated/gql';
+import ActivityFactory from '../internal/factories.ts/ActivityFactory';
 
-const resolvers = {
+const resolvers: Resolvers<ApolloContext> = {
   Query: {
-    recommendations: (_, { activities }: { activities: Activities[] }): Recommendation[] => {
-      const response = [
-        { key: 'SKIING', ranking: 10.0 },
-        { key: 'SURFING', ranking: 90.0 },
-        { key: 'OUTDOOR_SIGHTSEEING', ranking: 90.0 },
-        { key: 'INDOOR_SIGHTSEEING', ranking: 10.0 },
-      ];
-      return response.filter((item) => activities.find((activity) => item.key === activity));
+    recommendations: async (_, { input }, { dataSources }): Promise<Recommendation[]> => {
+      const { coordinates, activities, days = '7' } = input;
+      const weather = await dataSources.weatherAPI.getWeatherOverDays(days, coordinates);
+      const activityList = activities.map((activity) => new ActivityFactory(activity).init());
+
+      return activityList
+        .map((activity) => activity.getRecommendation(weather))
+        .sort((a, b) => {
+          if (a.ranking > b.ranking) return -1;
+          if (a.ranking < b.ranking) return 1;
+          return 0;
+        });
     },
   },
 };

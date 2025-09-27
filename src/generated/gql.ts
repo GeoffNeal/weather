@@ -27,19 +27,30 @@ export enum Activities {
   SURFING = 'SURFING',
 }
 
+export type Coordinates = {
+  lat?: InputMaybe<Scalars['Float']['input']>;
+  lon?: InputMaybe<Scalars['Float']['input']>;
+};
+
 export type Query = {
   __typename?: 'Query';
   recommendations?: Maybe<Array<Maybe<Recommendation>>>;
 };
 
 export type QueryRecommendationsArgs = {
-  activities: Array<InputMaybe<Activities>>;
+  input: RecommendationsInput;
 };
 
 export type Recommendation = {
   __typename?: 'Recommendation';
   key: Scalars['String']['output'];
   ranking: Scalars['Float']['output'];
+};
+
+export type RecommendationsInput = {
+  activities: Array<Activities>;
+  coordinates: Coordinates;
+  days?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type ResolverTypeWrapper<T> = Promise<T> | T;
@@ -141,18 +152,22 @@ export type DirectiveResolverFn<
 export type ResolversTypes = {
   Activities: Activities;
   Boolean: ResolverTypeWrapper<Scalars['Boolean']['output']>;
+  Coordinates: Coordinates;
   Float: ResolverTypeWrapper<Scalars['Float']['output']>;
   Query: ResolverTypeWrapper<Record<PropertyKey, never>>;
   Recommendation: ResolverTypeWrapper<Recommendation>;
+  RecommendationsInput: RecommendationsInput;
   String: ResolverTypeWrapper<Scalars['String']['output']>;
 };
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = {
   Boolean: Scalars['Boolean']['output'];
+  Coordinates: Coordinates;
   Float: Scalars['Float']['output'];
   Query: Record<PropertyKey, never>;
   Recommendation: Recommendation;
+  RecommendationsInput: RecommendationsInput;
   String: Scalars['String']['output'];
 };
 
@@ -164,7 +179,7 @@ export type QueryResolvers<
     Maybe<Array<Maybe<ResolversTypes['Recommendation']>>>,
     ParentType,
     ContextType,
-    RequireFields<QueryRecommendationsArgs, 'activities'>
+    RequireFields<QueryRecommendationsArgs, 'input'>
   >;
 };
 
