@@ -8,8 +8,9 @@
     "moduleResolution": "node",
     "esModuleInterop": true,
     "types": ["node", "jest"],
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true
   },
   "include": ["src"],
-  "exclude": ["node_modules", "**/__tests__/*", "dist", "src/generated"]
+  "exclude": ["node_modules", "**/__tests__/*", "dist", "src/generated", "src/stubs"]
 }

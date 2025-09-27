@@ -10,7 +10,7 @@ describe('OUTDOOR_SIGHTSEEING Activity class', () => {
 
     expect(result).toStrictEqual({
       key: Activities.OUTDOOR_SIGHTSEEING,
-      ranking: 999,
+      ranking: 59.11348039215688,
     });
   });
 });

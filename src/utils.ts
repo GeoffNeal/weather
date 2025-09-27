@@ -3,3 +3,7 @@ export const getErrorMessage = (error: unknown) => {
     return error.message;
   }
 };
+
+export const distanceFromTarget = (target: number, value: number): number => {
+  return Math.abs(target - value);
+};

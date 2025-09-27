@@ -41,13 +41,13 @@ const input2 = {
 };
 
 const recommendationsQueryExpectedResponse1 = [
-  { key: 'SURFING', ranking: 456 },
-  { key: 'SKIING', ranking: 123 },
+  { key: 'SURFING', ranking: 53.64975490196078 },
+  { key: 'SKIING', ranking: 45.69534313725489 },
 ];
 
 const recommendationsQueryExpectedResponse2 = [
-  { key: 'OUTDOOR_SIGHTSEEING', ranking: 999 },
-  { key: 'INDOOR_SIGHTSEEING', ranking: 789 },
+  { key: 'INDOOR_SIGHTSEEING', ranking: 60.695343137254895 },
+  { key: 'OUTDOOR_SIGHTSEEING', ranking: 59.11348039215688 },
 ];
 
 describe('Server', () => {

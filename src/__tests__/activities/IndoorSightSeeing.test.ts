@@ -10,7 +10,7 @@ describe('INDOOR_SIGHTSEEING Activity class', () => {
 
     expect(result).toStrictEqual({
       key: Activities.INDOOR_SIGHTSEEING,
-      ranking: 789,
+      ranking: 60.695343137254895,
     });
   });
 });
