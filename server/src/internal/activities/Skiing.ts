@@ -1,5 +1,4 @@
 import { Recommendation, Activities } from '../../../generated/gql';
-import { distanceFromTarget } from '../../utils';
 import { WeatherAPIResponse } from '../../dataSources/WeatherAPI';
 import Activity from '../abstract/Activity';
 import Weather from '../Weather';
@@ -34,7 +33,7 @@ export class SKIING extends Activity {
     };
 
     const distances = Object.keys(comparison).map((key) => {
-      return distanceFromTarget(comparison[key].target, comparison[key].actual);
+      return Math.abs(comparison[key].target - comparison[key].actual);
     });
 
     const totalDistanceFromTarget = Math.min(

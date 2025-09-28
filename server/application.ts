@@ -13,13 +13,12 @@ const publicPath = express.static(path.resolve(process.cwd(), 'dist/client/publi
 
 app.use('/public', publicPath);
 
-// Send the index path for all pages because React Router
-// will then use client-side routing to redirect to the correct page
+// Send the index path for all pages because we only have one
 app.use((_, res) => {
   res.sendFile(indexPath);
 });
 
 app.listen(port, function () {
   // eslint-disable-next-line no-console
-  console.log(`🚀  Web server ready at http://localhost:${port}`);
+  console.log(`🚀 Web server ready at http://localhost:${port}`);
 });
