@@ -6,6 +6,9 @@ export const getErrorMessage = (error: unknown) => {
   if (error instanceof Error) {
     return error.message;
   }
+
+  // TODO: Handle other scenarios
+  return 'Something went wrong';
 };
 
 export const calculateScore = (comparison: Comparison) => {

@@ -9,21 +9,22 @@ const Container = styled.div`
   justify-content: space-between;
 `;
 
-const Section = styled.section`
+const Section = styled.section<{ bgColor: string }>`
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
+  background-color: ${(props) => props.bgColor};
 `;
 
 const Root: React.FC = () => {
   return (
     <Container>
-      <Section>
+      <Section bgColor="var(--brand-01-100)">
         <Search />
       </Section>
-      <Section>
+      <Section bgColor="var(--off-white)">
         <Results />
       </Section>
     </Container>

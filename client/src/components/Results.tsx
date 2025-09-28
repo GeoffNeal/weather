@@ -47,6 +47,10 @@ const Details = styled.div`
   display: flex;
 `;
 
+const Recommendation = styled.div`
+  padding: var(--default-padding);
+`;
+
 const Results: React.FC = () => {
   const [search] = useAtom(searchAtom);
   const { loading, error, data } = useQuery<RecommendationsReponse>(GET_RECOMMENDATIONS, {
@@ -62,6 +66,10 @@ const Results: React.FC = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error : {error.message}</p>;
 
+  if (!data?.recommendations?.length) {
+    return <h3>No results</h3>;
+  }
+
   return (
     <Container>
       {data.recommendations.map((recommendation) => (
@@ -71,10 +79,10 @@ const Results: React.FC = () => {
           </h3>
           <Details>
             {recommendation.results.map((result, i) => (
-              <div key={result.key}>
+              <Recommendation key={result.key}>
                 <p>{`(${i + 1}) - ${result.key}`}</p>
                 <span>{result.ranking.toFixed(2)}</span>
-              </div>
+              </Recommendation>
             ))}
           </Details>
         </Result>
