@@ -12,7 +12,7 @@
 import { CodegenConfig } from '@graphql-codegen/cli';
 
 const config: CodegenConfig = {
-  schema: 'server/src/typeDefs/**/*.ts',
+  schema: 'server/src/graphql/typeDefs.ts',
   generates: {
     './server/generated/gql.ts': {
       config: {

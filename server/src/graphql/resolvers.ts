@@ -1,6 +1,6 @@
 import { ApolloContext } from '../../index';
 import type { Recommendation, Recommendations, Resolvers } from '../../generated/gql';
-import ActivityFactory from '../internal/factories.ts/ActivityFactory';
+import ActivityFactory from '../internal/factories/ActivityFactory';
 import { getErrorMessage } from '../utils';
 
 const resolvers: Resolvers<ApolloContext> = {

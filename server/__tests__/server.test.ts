@@ -2,8 +2,8 @@ import { ApolloServer } from '@apollo/server';
 import assert from 'assert';
 
 // Graphql - server
-import typeDefs from '../src/typeDefs';
-import resolvers from '../src/resolvers';
+import typeDefs from '../src/graphql/typeDefs';
+import resolvers from '../src/graphql/resolvers';
 
 // Data sources
 import WeatherAPI from '../src/dataSources/WeatherAPI';
