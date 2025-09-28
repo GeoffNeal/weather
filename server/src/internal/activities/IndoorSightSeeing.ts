@@ -40,6 +40,7 @@ export class INDOOR_SIGHTSEEING extends Activity {
 
     return {
       key: Activities.INDOOR_SIGHTSEEING,
+      label: 'Indoor Sightseeing',
       ranking: utils.calculateScore(comparison),
     };
   }

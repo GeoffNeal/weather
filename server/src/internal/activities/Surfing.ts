@@ -40,6 +40,7 @@ export class SURFING extends Activity {
 
     return {
       key: Activities.SURFING,
+      label: 'Surfing',
       ranking: utils.calculateScore(comparison),
     };
   }

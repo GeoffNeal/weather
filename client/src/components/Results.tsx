@@ -5,17 +5,18 @@ import { useAtom } from 'jotai';
 import styled from 'styled-components';
 import { searchAtom } from '../atoms/search';
 
-type Recommendation = {
+type RecommendationItem = {
   city: string;
   countryCode: string;
   results: {
     key: string;
+    label: string;
     ranking: number;
   }[];
 };
 
 type RecommendationsReponse = {
-  recommendations: Recommendation[];
+  recommendations: RecommendationItem[];
 };
 
 const GET_RECOMMENDATIONS = gql`
@@ -25,6 +26,7 @@ const GET_RECOMMENDATIONS = gql`
       countryCode
       results {
         key
+        label
         ranking
       }
     }
@@ -58,7 +60,7 @@ const Results: React.FC = () => {
       input: {
         name: search,
         activities: ['SKIING', 'OUTDOOR_SIGHTSEEING', 'SURFING', 'INDOOR_SIGHTSEEING'],
-        days: '15',
+        days: '7',
       },
     },
   });
@@ -80,7 +82,8 @@ const Results: React.FC = () => {
           <Details>
             {recommendation.results.map((result, i) => (
               <Recommendation key={result.key}>
-                <p>{`(${i + 1}) - ${result.key}`}</p>
+                <b>{i + 1}</b>
+                <p>{result.label}</p>
                 <span>{result.ranking.toFixed(2)}</span>
               </Recommendation>
             ))}

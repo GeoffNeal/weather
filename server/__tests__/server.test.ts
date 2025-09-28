@@ -19,6 +19,7 @@ const getRecommendations = `#graphql
       countryCode
       results {
         key
+        label
         ranking
       }
     }
@@ -45,8 +46,8 @@ const recommendationsQueryExpectedResponse1 = [
     city: 'Paris',
     countryCode: 'FR',
     results: [
-      { key: 'SURFING', ranking: 53.64975490196078 },
-      { key: 'SKIING', ranking: 45.69534313725489 },
+      { key: 'SKIING', label: 'Skiing', ranking: 60.69534313725489 },
+      { key: 'SURFING', label: 'Surfing', ranking: 53.64975490196078 },
     ],
   },
 ];
@@ -56,8 +57,8 @@ const recommendationsQueryExpectedResponse2 = [
     city: 'Paris',
     countryCode: 'FR',
     results: [
-      { key: 'INDOOR_SIGHTSEEING', ranking: 60.695343137254895 },
-      { key: 'OUTDOOR_SIGHTSEEING', ranking: 59.11348039215688 },
+      { key: 'INDOOR_SIGHTSEEING', label: 'Indoor Sightseeing', ranking: 60.695343137254895 },
+      { key: 'OUTDOOR_SIGHTSEEING', label: 'Outdoor Sightseeing', ranking: 59.11348039215688 },
     ],
   },
 ];

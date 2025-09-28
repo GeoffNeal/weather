@@ -45,6 +45,7 @@ export type QueryRecommendationsArgs = {
 export type Recommendation = {
   __typename?: 'Recommendation';
   key: Scalars['String']['output'];
+  label: Scalars['String']['output'];
   ranking: Scalars['Float']['output'];
 };
 
@@ -207,6 +208,7 @@ export type RecommendationResolvers<
     ResolversParentTypes['Recommendation'] = ResolversParentTypes['Recommendation'],
 > = {
   key?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  label?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   ranking?: Resolver<ResolversTypes['Float'], ParentType, ContextType>;
 };
 

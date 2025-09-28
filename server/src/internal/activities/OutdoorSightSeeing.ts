@@ -40,6 +40,7 @@ export class OUTDOOR_SIGHTSEEING extends Activity {
 
     return {
       key: Activities.OUTDOOR_SIGHTSEEING,
+      label: 'Outdoor Sightseeing',
       ranking: utils.calculateScore(comparison),
     };
   }

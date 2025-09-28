@@ -10,6 +10,7 @@ const typeDefs = `#graphql
     # Contains the score for this activity
     type Recommendation {
         key: String!
+        label: String!
         ranking: Float!
     }
 

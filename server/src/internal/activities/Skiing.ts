@@ -11,7 +11,7 @@ import Weather from '../Weather';
  * based on weater conditions.
  */
 export class SKIING extends Activity {
-  temperature: number = -25;
+  temperature: number = -10;
   windspeed: number = 20;
   humidity: number = 60;
 
@@ -40,6 +40,7 @@ export class SKIING extends Activity {
 
     return {
       key: Activities.SKIING,
+      label: 'Skiing',
       ranking: utils.calculateScore(comparison),
     };
   }

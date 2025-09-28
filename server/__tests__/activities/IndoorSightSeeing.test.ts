@@ -10,6 +10,7 @@ describe('INDOOR_SIGHTSEEING Activity class', () => {
 
     expect(result).toStrictEqual({
       key: Activities.INDOOR_SIGHTSEEING,
+      label: 'Indoor Sightseeing',
       ranking: 60.695343137254895,
     });
   });
