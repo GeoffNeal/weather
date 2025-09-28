@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
-    "rootDirs": ["server/src"],
+    "jsx": "react-jsx",
+    "rootDirs": ["server", "client"],
     "outDir": "dist",
-    "lib": ["es2020"],
+    "lib": ["es2020", "DOM", "DOM.Iterable"],
     "target": "es2020",
     "module": "esnext",
     "moduleResolution": "node",
@@ -11,6 +12,6 @@
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "**/__tests__/*", "dist", "src/generated", "src/stubs"]
+  "include": ["server", "client"],
+  "exclude": ["node_modules", "**/__tests__/*", "dist", "server/generated", "server/stubs"]
 }

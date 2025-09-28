@@ -1,4 +1,4 @@
-import { distanceFromTarget } from '../utils';
+import { distanceFromTarget } from '../src/utils';
 
 describe('Utils', () => {
   test.each([

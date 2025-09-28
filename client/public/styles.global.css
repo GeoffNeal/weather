@@ -1,0 +1,184 @@
+:root {
+  /* =========================================== *
+   COLOURS
+   * =========================================== */
+
+  /* Base */
+  --titan-white: #f1effc;
+  --maximum-blue-purple: #bbadf0;
+  --lavender-floral: #a08ce9;
+  --slate-blue-medium: #856be3;
+  --slate-blue: #775ae0;
+  --fuchsia-blue: #6b51ca;
+  --ruthless-empress: #533f9d;
+  --spanish-violet: #3c2d70;
+  --cadet-grey: #9aa8b8;
+  --shadow-blue: #72859c;
+  --queen-blue: #49627f;
+  --airforce: #355171;
+  --indigo-dye: #304966;
+  --prussian-blue: #25394f;
+  --midnight-express: #1b2939;
+  --honeydew: #ddecda;
+  --nyanza: #cfe4cb;
+  --tea-green: #c1ddbc;
+  --celadon: #bad9b5;
+  --laurel-green: #a7c3a3;
+  --artichoke: #82987f;
+  --ebony: #5d6d5b;
+  --alabaster: #fbfbfb;
+  --errigal-grey: #f2f2f3;
+  --french-grey: #bfbdc1;
+  --taupe-grey: #7f7b82;
+  --charcoal-dust: #59565b;
+  --stiletto: #333134;
+  --dark-jungle-green: #172121;
+  --cadet-blue: #38a3a5;
+  --indian-yellow: #fe9000;
+  --carolina-blue: #339ed0;
+  --imperial-red: #ef233c;
+
+  --purple-05: var(--titan-white);
+  --purple-10: var(--maximum-blue-purple);
+  --purple-40: var(--lavender-floral);
+  --purple-90: var(--slate-blue-medium);
+  --purple-100: var(--slate-blue);
+  --purple-120: var(--fuchsia-blue);
+  --purple-140: var(--ruthless-empress);
+  --purple-160: var(--spanish-violet);
+
+  --blue-10: var(--cadet-grey);
+  --blue-40: var(--shadow-blue);
+  --blue-90: var(--queen-blue);
+  --blue-100: var(--airforce);
+  --blue-120: var(--indigo-dye);
+  --blue-140: var(--prussian-blue);
+  --blue-160: var(--midnight-express);
+
+  --green-10: var(--honeydew);
+  --green-40: var(--nyanza);
+  --green-90: var(--tea-green);
+  --green-100: var(--celadon);
+  --green-120: var(--laurel-green);
+  --green-140: var(--artichoke);
+  --green-160: var(--ebony);
+
+  /* Shades */
+  --white: #fff;
+  --off-white: var(--alabaster);
+  --grey-lighter: var(--errigal-grey);
+  --grey-light: var(--french-grey);
+  --grey: var(--taupe-grey);
+  --grey-dark: var(--charcoal-dust);
+  --grey-darker: var(--stiletto);
+  --black: var(--dark-jungle-green);
+
+  /* Brand */
+  --brand-01-05: var(--purple-05);
+  --brand-01-10: var(--purple-10);
+  --brand-01-40: var(--purple-40);
+  --brand-01-90: var(--purple-90);
+  --brand-01-100: var(--purple-100);
+  --brand-01-120: var(--purple-120);
+  --brand-01-140: var(--purple-140);
+  --brand-01-160: var(--purple-160);
+
+  --brand-02-10: var(--blue-10);
+  --brand-02-40: var(--blue-40);
+  --brand-02-90: var(--blue-90);
+  --brand-02-100: var(--blue-100);
+  --brand-02-120: var(--blue-120);
+  --brand-02-140: var(--blue-140);
+  --brand-02-160: var(--blue-160);
+
+  --brand-03-10: var(--green-10);
+  --brand-03-40: var(--green-40);
+  --brand-03-90: var(--green-90);
+  --brand-03-100: var(--green-100);
+  --brand-03-120: var(--green-120);
+  --brand-03-140: var(--green-140);
+  --brand-03-160: var(--green-160);
+
+  /* Typography */
+  --color-text: var(--black);
+  --color-text-muted: var(--grey);
+
+  /* Contextual */
+  --color-success: var(--cadet-blue);
+  --color-warning: var(--indian-yellow);
+  --color-info: var(--carolina-blue);
+  --color-error: var(--imperial-red);
+
+  /* =========================================== *
+      TYPOGRAPHY
+     * =========================================== */
+
+  /* Font family */
+  --font-family:
+    -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans,
+    Droid Sans, Helvetica Neue, sans-serif;
+
+  /* Font sizes. */
+  --font-size-xxs: 0.75rem;
+  --font-size-xs: 0.875rem;
+  --font-size-sm: 1rem;
+  --font-size-md: 1.125rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.5rem;
+  --font-size-2xl: 2rem;
+  --font-size-3xl: 3rem;
+
+  /* Font weights */
+  --font-weight: 400;
+  --font-weight-bold: 600;
+
+  /* Line heights. */
+  --line-height-sm: 1.25;
+  --line-height-md: 1.5;
+
+  /* Letter spacings. */
+  --letter-spacing-sm: 0.05em;
+  --letter-spacing-md: 0.1em;
+
+  /* =========================================== *
+      LAYOUT
+     * =========================================== */
+
+  --default-padding: 1rem;
+  --default-margin: 1rem;
+  --default-drop-shadow: 0px 0px 7px rgba(0, 0, 0, 0.1);
+  --default-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.16);
+  --default-border: 1px solid var(--grey-light);
+  --light-border: 1px solid var(--grey-lighter);
+  --dark-border: 1px solid var(--grey);
+  --default-border-radius: 10px;
+
+  /* Cursors */
+  --button-cursor: pointer;
+
+  /* Transitions */
+  --default-transition-time: 0.12s;
+  --default-transition-type: linear;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+  color: var(--color-text);
+  font-family: var(--font-family);
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}

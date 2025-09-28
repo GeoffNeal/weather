@@ -1,5 +1,5 @@
 import { Activities } from '../../generated/gql';
-import { SURFING } from '../../server/internal/activities';
+import { SURFING } from '../../src/internal/activities';
 import { weatherStub } from '../../stubs/weather';
 
 describe('SURFING Activity class', () => {

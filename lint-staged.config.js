@@ -1,6 +1,6 @@
 export default {
   // Type check TypeScript files
-  '**/*.(ts|tsx)': () => 'tsc -p tsconfig.json --noEmit',
+  '**/*.(ts|tsx)': () => 'tsc -p tsconfig.json --noEmit --skipLibCheck',
 
   // Lint then format TypeScript and JavaScript files
   '**/*.(ts|tsx|js)': (filenames) => [

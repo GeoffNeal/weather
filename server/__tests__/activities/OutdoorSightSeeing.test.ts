@@ -1,5 +1,5 @@
 import { Activities } from '../../generated/gql';
-import { OUTDOOR_SIGHTSEEING } from '../../server/internal/activities';
+import { OUTDOOR_SIGHTSEEING } from '../../src/internal/activities';
 import { weatherStub } from '../../stubs/weather';
 
 describe('OUTDOOR_SIGHTSEEING Activity class', () => {

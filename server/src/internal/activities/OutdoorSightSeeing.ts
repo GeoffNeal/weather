@@ -1,5 +1,5 @@
 import { Recommendation, Activities } from '../../../generated/gql';
-import { distanceFromTarget } from '../../../utils';
+import { distanceFromTarget } from '../../utils';
 import { WeatherAPIResponse } from '../../dataSources/WeatherAPI';
 import Activity from '../abstract/Activity';
 import Weather from '../Weather';

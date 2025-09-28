@@ -2,13 +2,13 @@ import { ApolloServer } from '@apollo/server';
 import assert from 'assert';
 
 // Graphql - server
-import typeDefs from '../server/typeDefs';
-import resolvers from '../server/resolvers';
+import typeDefs from '../src/typeDefs';
+import resolvers from '../src/resolvers';
 
 // Data sources
-import WeatherAPI from '../server/dataSources/WeatherAPI';
+import WeatherAPI from '../src/dataSources/WeatherAPI';
 
-jest.mock('../server/dataSources/WeatherAPI');
+jest.mock('../src/dataSources/WeatherAPI');
 
 const getRecommendations = `#graphql
   query GetRecommendations($input: RecommendationsInput!) {

@@ -7,7 +7,8 @@ After that apply all the rules in module.rules and produce the output and place 
 const config = {
   mode: 'development',
   entry: {
-    server: _resolve(__dirname, 'src/server/index.ts'),
+    server: _resolve(__dirname, 'server/index.ts'),
+    webserver: _resolve(__dirname, 'server/application.ts'),
   },
   output: {
     /** "path"

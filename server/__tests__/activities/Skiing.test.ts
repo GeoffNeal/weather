@@ -1,5 +1,5 @@
 import { Activities } from '../../generated/gql';
-import { SKIING } from '../../server/internal/activities';
+import { SKIING } from '../../src/internal/activities';
 import { weatherStub } from '../../stubs/weather';
 
 describe('SKIING Activity class', () => {

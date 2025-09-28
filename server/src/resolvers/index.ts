@@ -1,4 +1,4 @@
-import { ApolloContext } from '..';
+import { ApolloContext } from '../../index';
 import type { Recommendation, Resolvers } from '../../generated/gql';
 import ActivityFactory from '../internal/factories.ts/ActivityFactory';
 

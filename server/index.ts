@@ -2,9 +2,9 @@ import { ApolloServer } from '@apollo/server';
 import { startStandaloneServer } from '@apollo/server/standalone';
 
 // Types and resolvers
-import typeDefs from './typeDefs';
-import resolvers from './resolvers';
-import WeatherAPI from './dataSources/WeatherAPI';
+import typeDefs from './src/typeDefs';
+import resolvers from './src/resolvers';
+import WeatherAPI from './src/dataSources/WeatherAPI';
 
 export interface ApolloContext {
   dataSources: {

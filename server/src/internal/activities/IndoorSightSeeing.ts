@@ -1,5 +1,5 @@
 import { Recommendation, Activities } from '../../../generated/gql';
-import { distanceFromTarget } from '../../../utils';
+import { distanceFromTarget } from '../../utils';
 import { WeatherAPIResponse } from '../../dataSources/WeatherAPI';
 import Activity from '../abstract/Activity';
 import Weather from '../Weather';
@@ -8,10 +8,10 @@ import Weather from '../Weather';
  * Business logic for generating activity
  * recommendations from weather
  */
-export class SKIING extends Activity {
+export class INDOOR_SIGHTSEEING extends Activity {
   getRecommendation(weather: WeatherAPIResponse): Recommendation {
     return {
-      key: Activities.SKIING,
+      key: Activities.INDOOR_SIGHTSEEING,
       ranking: this.calculateScore(weather),
     };
   }
@@ -28,9 +28,9 @@ export class SKIING extends Activity {
     // either the total differnce or 100 - whichever is smaller - from 100.
 
     const comparison = {
-      temperature: { target: -25, actual: w.getAverageTemperature() },
+      temperature: { target: 0, actual: w.getAverageTemperature() },
       windspeed: { target: 20, actual: w.getAverageWindSpeed() },
-      humidity: { target: 60, actual: w.getAverageHumidity() },
+      humidity: { target: 50, actual: w.getAverageHumidity() },
     };
 
     const distances = Object.keys(comparison).map((key) => {
