@@ -1,3 +1,4 @@
+import dotenv from 'dotenv';
 import { ApolloServer } from '@apollo/server';
 import { startStandaloneServer } from '@apollo/server/standalone';
 
@@ -5,10 +6,15 @@ import { startStandaloneServer } from '@apollo/server/standalone';
 import typeDefs from './src/typeDefs';
 import resolvers from './src/resolvers';
 import WeatherAPI from './src/dataSources/WeatherAPI';
+import GeocodingAPI from './src/dataSources/GeocodingAPI';
+
+//load the .env file
+dotenv.config();
 
 export interface ApolloContext {
   dataSources: {
     weatherAPI: WeatherAPI;
+    geocodingAPI: GeocodingAPI;
   };
 }
 
@@ -23,6 +29,7 @@ const { url } = await startStandaloneServer(server, {
     return {
       dataSources: {
         weatherAPI: new WeatherAPI(),
+        geocodingAPI: new GeocodingAPI(),
       },
     };
   },

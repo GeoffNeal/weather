@@ -71,7 +71,7 @@ class WeatherAPI extends RESTDataSource {
 
     return this.get(
       `forecast?latitude=${encodeURIComponent(lat)}&longitude=${encodeURIComponent(lon)}&past_days=${encodeURIComponent(days)}&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m`
-    ) as Promise<WeatherAPIResponse>;
+    );
   }
 }
 

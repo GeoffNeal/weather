@@ -1,4 +1,6 @@
-export const weatherStub = {
+import { WeatherAPIResponse } from '../src/dataSources/WeatherAPI';
+
+export const weatherStub: WeatherAPIResponse = {
   latitude: 52.52,
   longitude: 13.419998,
   generationtime_ms: 3.40819358825684,

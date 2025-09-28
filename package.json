@@ -62,9 +62,12 @@
     "@apollo/client": "^4.0.6",
     "@apollo/datasource-rest": "^6.4.1",
     "@apollo/server": "^5.0.0",
+    "dotenv": "^17.2.2",
     "express": "^5.1.0",
     "graphql": "^16.11.0",
+    "jotai": "^2.15.0",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react-dom": "^19.1.1",
+    "styled-components": "^6.1.19"
   }
 }

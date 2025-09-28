@@ -13,13 +13,19 @@ const typeDefs = `#graphql
         ranking: Float!
     }
 
-    input Coordinates {
-        lat: Float
-        lon: Float
+    type Recommendations {
+        city: String!
+        countryCode: String!
+        results: [Recommendation]!
+    }
+
+    type Coordinates {
+        lat: Float!
+        lon: Float!
     }
 
     input RecommendationsInput {
-        coordinates: Coordinates!
+        name: String!
         activities: [Activities!]!
         days: String
     }
@@ -28,7 +34,7 @@ const typeDefs = `#graphql
     # clients can execute, along with the return type for each. In this
     # case, the "books" query returns an array of zero or more Books (defined above).
     type Query {
-        recommendations(input: RecommendationsInput!): [Recommendation]
+        recommendations(input: RecommendationsInput!): [Recommendations]
     }
 `;
 

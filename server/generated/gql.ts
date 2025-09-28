@@ -28,13 +28,14 @@ export enum Activities {
 }
 
 export type Coordinates = {
-  lat?: InputMaybe<Scalars['Float']['input']>;
-  lon?: InputMaybe<Scalars['Float']['input']>;
+  __typename?: 'Coordinates';
+  lat: Scalars['Float']['output'];
+  lon: Scalars['Float']['output'];
 };
 
 export type Query = {
   __typename?: 'Query';
-  recommendations?: Maybe<Array<Maybe<Recommendation>>>;
+  recommendations?: Maybe<Array<Maybe<Recommendations>>>;
 };
 
 export type QueryRecommendationsArgs = {
@@ -47,10 +48,17 @@ export type Recommendation = {
   ranking: Scalars['Float']['output'];
 };
 
+export type Recommendations = {
+  __typename?: 'Recommendations';
+  city: Scalars['String']['output'];
+  countryCode: Scalars['String']['output'];
+  results: Array<Maybe<Recommendation>>;
+};
+
 export type RecommendationsInput = {
   activities: Array<Activities>;
-  coordinates: Coordinates;
   days?: InputMaybe<Scalars['String']['input']>;
+  name: Scalars['String']['input'];
 };
 
 export type ResolverTypeWrapper<T> = Promise<T> | T;
@@ -152,10 +160,11 @@ export type DirectiveResolverFn<
 export type ResolversTypes = {
   Activities: Activities;
   Boolean: ResolverTypeWrapper<Scalars['Boolean']['output']>;
-  Coordinates: Coordinates;
+  Coordinates: ResolverTypeWrapper<Coordinates>;
   Float: ResolverTypeWrapper<Scalars['Float']['output']>;
   Query: ResolverTypeWrapper<Record<PropertyKey, never>>;
   Recommendation: ResolverTypeWrapper<Recommendation>;
+  Recommendations: ResolverTypeWrapper<Recommendations>;
   RecommendationsInput: RecommendationsInput;
   String: ResolverTypeWrapper<Scalars['String']['output']>;
 };
@@ -167,8 +176,17 @@ export type ResolversParentTypes = {
   Float: Scalars['Float']['output'];
   Query: Record<PropertyKey, never>;
   Recommendation: Recommendation;
+  Recommendations: Recommendations;
   RecommendationsInput: RecommendationsInput;
   String: Scalars['String']['output'];
+};
+
+export type CoordinatesResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['Coordinates'] = ResolversParentTypes['Coordinates'],
+> = {
+  lat?: Resolver<ResolversTypes['Float'], ParentType, ContextType>;
+  lon?: Resolver<ResolversTypes['Float'], ParentType, ContextType>;
 };
 
 export type QueryResolvers<
@@ -176,7 +194,7 @@ export type QueryResolvers<
   ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query'],
 > = {
   recommendations?: Resolver<
-    Maybe<Array<Maybe<ResolversTypes['Recommendation']>>>,
+    Maybe<Array<Maybe<ResolversTypes['Recommendations']>>>,
     ParentType,
     ContextType,
     RequireFields<QueryRecommendationsArgs, 'input'>
@@ -192,7 +210,19 @@ export type RecommendationResolvers<
   ranking?: Resolver<ResolversTypes['Float'], ParentType, ContextType>;
 };
 
+export type RecommendationsResolvers<
+  ContextType = any,
+  ParentType extends
+    ResolversParentTypes['Recommendations'] = ResolversParentTypes['Recommendations'],
+> = {
+  city?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  countryCode?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  results?: Resolver<Array<Maybe<ResolversTypes['Recommendation']>>, ParentType, ContextType>;
+};
+
 export type Resolvers<ContextType = any> = {
+  Coordinates?: CoordinatesResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
   Recommendation?: RecommendationResolvers<ContextType>;
+  Recommendations?: RecommendationsResolvers<ContextType>;
 };

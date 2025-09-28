@@ -7,51 +7,64 @@ import resolvers from '../src/resolvers';
 
 // Data sources
 import WeatherAPI from '../src/dataSources/WeatherAPI';
+import GeocodingAPI from '../src/dataSources/GeocodingAPI';
 
 jest.mock('../src/dataSources/WeatherAPI');
+jest.mock('../src/dataSources/GeocodingAPI');
 
 const getRecommendations = `#graphql
   query GetRecommendations($input: RecommendationsInput!) {
     recommendations(input: $input) {
-      key
-      ranking
+      city
+      countryCode
+      results {
+        key
+        ranking
+      }
     }
   }
 `;
 
 const input1 = {
   input: {
-    coordinates: {
-      lat: 52.52,
-      lon: 13.41,
-    },
+    name: 'Paris',
     activities: ['SKIING', 'SURFING'],
   },
 };
 
 const input2 = {
   input: {
-    coordinates: {
-      lat: 52.52,
-      lon: 13.41,
-    },
+    name: 'Paris',
     activities: ['INDOOR_SIGHTSEEING', 'OUTDOOR_SIGHTSEEING'],
     days: '10',
   },
 };
 
 const recommendationsQueryExpectedResponse1 = [
-  { key: 'SURFING', ranking: 53.64975490196078 },
-  { key: 'SKIING', ranking: 45.69534313725489 },
+  {
+    city: 'Paris',
+    countryCode: 'FR',
+    results: [
+      { key: 'SURFING', ranking: 53.64975490196078 },
+      { key: 'SKIING', ranking: 45.69534313725489 },
+    ],
+  },
 ];
 
 const recommendationsQueryExpectedResponse2 = [
-  { key: 'INDOOR_SIGHTSEEING', ranking: 60.695343137254895 },
-  { key: 'OUTDOOR_SIGHTSEEING', ranking: 59.11348039215688 },
+  {
+    city: 'Paris',
+    countryCode: 'FR',
+    results: [
+      { key: 'INDOOR_SIGHTSEEING', ranking: 60.695343137254895 },
+      { key: 'OUTDOOR_SIGHTSEEING', ranking: 59.11348039215688 },
+    ],
+  },
 ];
 
 describe('Server', () => {
   const weatherAPI = new WeatherAPI();
+  const geocodingAPI = new GeocodingAPI();
 
   test.each([
     [
@@ -83,6 +96,7 @@ describe('Server', () => {
         contextValue: {
           dataSources: {
             weatherAPI,
+            geocodingAPI,
           },
         },
       }

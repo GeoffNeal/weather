@@ -17,3 +17,9 @@ node_modules
 
 # Build files
 dist
+
+# Env
+.env
+
+# Other
+.DS_Store

@@ -12,9 +12,9 @@
 import { CodegenConfig } from '@graphql-codegen/cli';
 
 const config: CodegenConfig = {
-  schema: 'src/server/typeDefs/**/*.ts',
+  schema: 'server/src/typeDefs/**/*.ts',
   generates: {
-    './src/generated/gql.ts': {
+    './server/generated/gql.ts': {
       config: {
         namingConvention: {
           enumValues: 'change-case#upperCase',

@@ -1,5 +1,9 @@
 import path from 'path';
 import express from 'express';
+import dotenv from 'dotenv';
+
+//load the .env file
+dotenv.config();
 
 const port = process.env.WEBSERVER_PORT || 8080;
 const app = express();

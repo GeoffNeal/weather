@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { ApolloClient, InMemoryCache, HttpLink } from '@apollo/client';
+
+// Providers
 import { ApolloProvider } from '@apollo/client/react';
 
 // Styles

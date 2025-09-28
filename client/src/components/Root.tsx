@@ -1,54 +1,32 @@
 import * as React from 'react';
-import { gql } from '@apollo/client';
-import { useQuery } from '@apollo/client/react';
+import Search from './Search';
+import Results from './Results';
+import styled from 'styled-components';
 
-type Recommendation = {
-  key: string;
-  ranking: number;
-};
+const Container = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
 
-type RecommendationsReponse = {
-  recommendations: Recommendation[];
-};
-
-const GET_RECOMMENDATIONS = gql`
-  query GetRecommendations($input: RecommendationsInput!) {
-    recommendations(input: $input) {
-      key
-      ranking
-    }
-  }
+const Section = styled.section`
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 `;
 
 const Root: React.FC = () => {
-  const { loading, error, data } = useQuery<RecommendationsReponse>(GET_RECOMMENDATIONS, {
-    variables: {
-      input: {
-        coordinates: {
-          lat: 48.8251439,
-          lon: 2.3786705,
-        },
-        activities: ['SKIING', 'OUTDOOR_SIGHTSEEING', 'SURFING', 'INDOOR_SIGHTSEEING'],
-        days: '15',
-      },
-    },
-  });
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error : {error.message}</p>;
-
   return (
-    <div>
-      <h1>My App</h1>
-
-      <div>
-        {data.recommendations.map((recommendation) => (
-          <div key={recommendation.key}>
-            <p>{recommendation.key}</p>
-          </div>
-        ))}
-      </div>
-    </div>
+    <Container>
+      <Section>
+        <Search />
+      </Section>
+      <Section>
+        <Results />
+      </Section>
+    </Container>
   );
 };
 
