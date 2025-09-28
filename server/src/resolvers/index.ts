@@ -4,6 +4,15 @@ import ActivityFactory from '../internal/factories.ts/ActivityFactory';
 
 const resolvers: Resolvers<ApolloContext> = {
   Query: {
+    /**
+     * Generate recommendations for activities for the provided city based
+     * on the weather in that area.
+     *
+     * @param _
+     * @param args
+     * @param context
+     * @returns {Promise<Recommendations[]>} A Promise that resolves to a list of cities that match the input and their activity recommendations
+     */
     recommendations: async (_, { input }, { dataSources }): Promise<Recommendations[]> => {
       const { name, activities, days = '7' } = input;
       const { results } = await dataSources.geocodingAPI.getCityData(name);

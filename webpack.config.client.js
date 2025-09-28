@@ -10,24 +10,30 @@ const config = {
   mode: 'development',
   entry: _resolve(__dirname, 'client/index.tsx'),
   output: {
-    /** "path"
+    /**
+     * "path"
      * the folder path of the output file
      */
     path: _resolve(__dirname, 'dist/client/public'),
     publicPath: '/public/',
-    /** "filename"
+
+    /**
+     * "filename"
      * the name of the output file
      */
     filename: 'client.bundle.js',
   },
-  /** "target"
+
+  /**
+   * "target"
    * because we want the output to be
    * able to run on a browser, we need
    * set the target to `web`
    */
   target: 'web',
   resolve: {
-    /** "extensions"
+    /**
+     * "extensions"
      * If multiple files share the same name but have different extensions, webpack will
      * resolve the one with the extension listed first in the array and skip the rest.
      * This is what enables users to leave off the extension when importing

@@ -7,23 +7,27 @@ const typeDefs = `#graphql
         INDOOR_SIGHTSEEING
     }
 
-    # This "Book" type defines the queryable fields for every book in our data source.
+    # Contains the score for this activity
     type Recommendation {
         key: String!
         ranking: Float!
     }
 
+    # Contains the data for the specified city
     type Recommendations {
         city: String!
         countryCode: String!
         results: [Recommendation]!
     }
 
+    # Cartisan coordinates (latitude and longitude)
     type Coordinates {
         lat: Float!
         lon: Float!
     }
 
+    # Provide the name of the city and the activities you want rankings for
+    # as well as the number of days you want to check over
     input RecommendationsInput {
         name: String!
         activities: [Activities!]!
@@ -32,7 +36,7 @@ const typeDefs = `#graphql
 
     # The "Query" type is special: it lists all of the available queries that
     # clients can execute, along with the return type for each. In this
-    # case, the "books" query returns an array of zero or more Books (defined above).
+    # case, the "recommendations" query returns an array of zero or more Recommendations (defined above).
     type Query {
         recommendations(input: RecommendationsInput!): [Recommendations]
     }

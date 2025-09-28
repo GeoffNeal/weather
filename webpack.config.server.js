@@ -11,11 +11,14 @@ const config = {
     webserver: _resolve(__dirname, 'server/application.ts'),
   },
   output: {
-    /** "path"
+    /**
+     * "path"
      * The folder path of the output file
      */
     path: _resolve(__dirname, 'dist/server'),
-    /** "filename"
+
+    /**
+     * "filename"
      * The name of the output file
      * here [name] represents the name
      * of the chunk as determined by
@@ -23,7 +26,9 @@ const config = {
      * chunk will become `server.bundle.js`
      */
     filename: '[name].bundle.js',
-    /** "chunkFormat"
+
+    /**
+     * "chunkFormat"
      * Lets webpack know to output the chunks
      * as es modules. This is only possible
      * because we have set `experiments.outputModule`
@@ -32,21 +37,25 @@ const config = {
     chunkFormat: 'module',
   },
   experiments: {
-    /** "outputModule"
+    /**
+     * "outputModule"
      * As es modules are still experimental
      * in webpack we need to explicitly tell
      * the compiler that we want this feature
      */
     outputModule: true,
   },
-  /** "target"
+
+  /**
+   * "target"
    * In this case we want to target
    * the node environment, as we are
    * not going to use this in the browser
    */
   target: 'node',
   resolve: {
-    /** "extensions"
+    /**
+     * "extensions"
      * If multiple files share the same name but have different extensions, webpack will
      * resolve the one with the extension listed first in the array and skip the rest.
      * This is what enables users to leave off the extension when importing

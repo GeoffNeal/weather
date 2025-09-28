@@ -1,21 +1,27 @@
 import { Recommendation, Activities } from '../../../generated/gql';
 import { WeatherAPIResponse } from '../../dataSources/WeatherAPI';
+import * as utils from '../../utils';
 import Activity from '../abstract/Activity';
 import Weather from '../Weather';
 
 /**
- * Business logic for generating activity
- * recommendations from weather
+ * Activity class for SKIING
+ *
+ * Provides calculation of recommendations for skiing
+ * based on weater conditions.
  */
 export class SKIING extends Activity {
-  getRecommendation(weather: WeatherAPIResponse): Recommendation {
-    return {
-      key: Activities.SKIING,
-      ranking: this.calculateScore(weather),
-    };
-  }
+  temperature: number = -25;
+  windspeed: number = 20;
+  humidity: number = 60;
 
-  calculateScore(weather: WeatherAPIResponse): number {
+  /**
+   * Generate recommendation
+   *
+   * @param weather The response from the weather API
+   * @returns {Recommendation} The ranking for skiing based on the weather
+   */
+  getRecommendation(weather: WeatherAPIResponse): Recommendation {
     const w = new Weather(weather);
 
     // I'm not aware of any formula to determine the optimum conditions
@@ -27,20 +33,14 @@ export class SKIING extends Activity {
     // either the total differnce or 100 - whichever is smaller - from 100.
 
     const comparison = {
-      temperature: { target: -25, actual: w.getAverageTemperature() },
-      windspeed: { target: 20, actual: w.getAverageWindSpeed() },
-      humidity: { target: 60, actual: w.getAverageHumidity() },
+      temperature: { target: this.temperature, actual: w.getAverageTemperature() },
+      windspeed: { target: this.windspeed, actual: w.getAverageWindSpeed() },
+      humidity: { target: this.humidity, actual: w.getAverageHumidity() },
     };
 
-    const distances = Object.keys(comparison).map((key) => {
-      return Math.abs(comparison[key].target - comparison[key].actual);
-    });
-
-    const totalDistanceFromTarget = Math.min(
-      distances.reduce((acc, num) => acc + num, 0),
-      100
-    );
-
-    return 100 - totalDistanceFromTarget;
+    return {
+      key: Activities.SKIING,
+      ranking: utils.calculateScore(comparison),
+    };
   }
 }

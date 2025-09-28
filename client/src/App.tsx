@@ -15,7 +15,12 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-export default function App() {
+/**
+ * The client side app
+ * @type {React.FC}
+ * @returns {React.FunctionComponent} The root React component for the app
+ */
+const App: React.FC = () => {
   return (
     <React.StrictMode>
       <ApolloProvider client={client}>
@@ -23,4 +28,6 @@ export default function App() {
       </ApolloProvider>
     </React.StrictMode>
   );
-}
+};
+
+export default App;
