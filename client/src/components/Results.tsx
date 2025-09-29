@@ -74,8 +74,8 @@ const Results: React.FC = () => {
 
   return (
     <Container>
-      {data.recommendations.map((recommendation) => (
-        <Result key={`${recommendation.city}-${recommendation.countryCode}`}>
+      {data.recommendations.map((recommendation, idx) => (
+        <Result key={`${recommendation.city}-${recommendation.countryCode}-${idx}`}>
           <h3>
             {recommendation.city} - {recommendation.countryCode}
           </h3>

@@ -1,8 +1,6 @@
 import { Recommendation, Activities } from '../../../generated/gql';
 import { WeatherAPIResponse } from '../../dataSources/WeatherAPI';
-import * as utils from '../../utils';
 import Activity from '../abstract/Activity';
-import Weather from '../Weather';
 
 /**
  * Activity class for SURFING
@@ -11,9 +9,16 @@ import Weather from '../Weather';
  * based on weater conditions.
  */
 export class SURFING extends Activity {
-  temperature: number = 30;
-  windspeed: number = 35;
-  humidity: number = 70;
+  /**
+   * Optimum conditions
+   */
+  temperature_2m: number = 30; // °C
+  wind_speed_10m: number = 35; // km/h
+  relative_humidity_2m: number = 70; // %
+  snowfall: number = 0; // cm
+  snow_depth: number = 0; // m
+  soil_moisture_1_to_3cm: number = 0; // m³/m³
+  precipitation: number = 0; // mm
 
   /**
    * Generate recommendation
@@ -22,26 +27,10 @@ export class SURFING extends Activity {
    * @returns {Recommendation} The ranking for surfing based on the weather
    */
   getRecommendation(weather: WeatherAPIResponse): Recommendation {
-    const w = new Weather(weather);
-
-    // I'm not aware of any formula to determine the optimum conditions
-    // of a specific activity...
-    // So basically this is a completely arbitrary calculation based on what
-    // I think the values for these activities should `probably` be.
-    // We're just taking the difference between the target and the actual, getting
-    // the total difference by adding the results together, then taking
-    // either the total differnce or 100 - whichever is smaller - from 100.
-
-    const comparison = {
-      temperature: { target: this.temperature, actual: w.getAverageTemperature() },
-      windspeed: { target: this.windspeed, actual: w.getAverageWindSpeed() },
-      humidity: { target: this.humidity, actual: w.getAverageHumidity() },
-    };
-
     return {
       key: Activities.SURFING,
       label: 'Surfing',
-      ranking: utils.calculateScore(comparison),
+      ranking: this.calculateScore(weather),
     };
   }
 }

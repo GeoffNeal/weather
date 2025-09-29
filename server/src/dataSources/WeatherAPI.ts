@@ -6,6 +6,10 @@ export type Units = {
   temperature_2m: string;
   relative_humidity_2m: string;
   wind_speed_10m: string;
+  snowfall: string;
+  snow_depth: string;
+  soil_moisture_1_to_3cm: string;
+  precipitation: string;
 };
 
 export type Values = {
@@ -13,6 +17,10 @@ export type Values = {
   temperature_2m: number[];
   relative_humidity_2m: number[];
   wind_speed_10m: number[];
+  snowfall: number[];
+  snow_depth: number[];
+  soil_moisture_1_to_3cm: number[];
+  precipitation: number[];
 };
 
 export type WeatherAPIResponse = {
@@ -46,7 +54,7 @@ class WeatherAPI extends RESTDataSource {
     const { lat, lon } = coordinates;
 
     return this.get(
-      `forecast?latitude=${encodeURIComponent(lat)}&longitude=${encodeURIComponent(lon)}&past_days=${encodeURIComponent(days)}&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m`
+      `forecast?latitude=${encodeURIComponent(lat)}&longitude=${encodeURIComponent(lon)}&past_days=${encodeURIComponent(days)}&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m,snowfall,snow_depth,soil_moisture_1_to_3cm,precipitation`
     );
   }
 }

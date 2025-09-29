@@ -46,8 +46,8 @@ const recommendationsQueryExpectedResponse1 = [
     city: 'Paris',
     countryCode: 'FR',
     results: [
-      { key: 'SKIING', label: 'Skiing', ranking: 60.69534313725489 },
-      { key: 'SURFING', label: 'Surfing', ranking: 53.64975490196078 },
+      { key: 'SKIING', label: 'Skiing', ranking: 401.0087009803922 },
+      { key: 'SURFING', label: 'Surfing', ranking: 335.9675245098039 },
     ],
   },
 ];
@@ -57,8 +57,8 @@ const recommendationsQueryExpectedResponse2 = [
     city: 'Paris',
     countryCode: 'FR',
     results: [
-      { key: 'INDOOR_SIGHTSEEING', label: 'Indoor Sightseeing', ranking: 60.695343137254895 },
-      { key: 'OUTDOOR_SIGHTSEEING', label: 'Outdoor Sightseeing', ranking: 59.11348039215688 },
+      { key: 'OUTDOOR_SIGHTSEEING', label: 'Outdoor Sightseeing', ranking: 388.395955882353 },
+      { key: 'INDOOR_SIGHTSEEING', label: 'Indoor Sightseeing', ranking: 379.5420343137255 },
     ],
   },
 ];

@@ -11,7 +11,7 @@ describe('SKIING Activity class', () => {
     expect(result).toStrictEqual({
       key: Activities.SKIING,
       label: 'Skiing',
-      ranking: 60.69534313725489,
+      ranking: 401.0087009803922,
     });
   });
 });

@@ -35,6 +35,7 @@
     "@types/babel__preset-env": "^7",
     "@types/express": "^5",
     "@types/jest": "^30.0.0",
+    "@types/lodash.throttle": "^4",
     "@types/node": "^24.5.2",
     "@types/react": "^19",
     "@types/react-dom": "^19",
@@ -67,6 +68,7 @@
     "express": "^5.1.0",
     "graphql": "^16.11.0",
     "jotai": "^2.15.0",
+    "lodash.throttle": "^4.1.1",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "styled-components": "^6.1.19"

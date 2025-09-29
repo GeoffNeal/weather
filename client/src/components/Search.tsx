@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useAtom } from 'jotai';
+import throttle from 'lodash.throttle';
 import { searchAtom } from '../atoms/search';
 import styled from 'styled-components';
 
@@ -21,7 +22,7 @@ const Search: React.FC = () => {
 
   return (
     <div>
-      <Input id="city" type="text" value={search} onChange={handleChange} />
+      <Input id="city" type="text" value={search} onChange={throttle(handleChange, 100)} />
     </div>
   );
 };

@@ -11,7 +11,7 @@ describe('OUTDOOR_SIGHTSEEING Activity class', () => {
     expect(result).toStrictEqual({
       key: Activities.OUTDOOR_SIGHTSEEING,
       label: 'Outdoor Sightseeing',
-      ranking: 59.11348039215688,
+      ranking: 388.395955882353,
     });
   });
 });
