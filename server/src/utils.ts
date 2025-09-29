@@ -7,17 +7,40 @@ export const getErrorMessage = (error: unknown) => {
   return 'Something went wrong';
 };
 
+/**
+ * Calculate the average (median) given a list of numbers
+ *
+ * @param arr the list of numbers to find the average of
+ * @returns {number} the average of the specified numbers
+ */
 export const average = (arr: number[]): number => {
   const total = arr.reduce((acc, num) => acc + num, 0);
   return total / arr.length;
 };
 
+/**
+ * Check whether a number is out of a specified range
+ *
+ * @param range the range within which we expect to find the number
+ * @param num the number we expect to be in the range
+ * @returns {boolean} whether or not the number is actually outside of the specified range
+ */
 export const isOutOfRange = (range: [number, number], num: number): boolean => {
   const isLowerThanMin = Math.min(range[0], num) === num;
   const isHigherThanMax = Math.max(range[1], num) === num;
   return isLowerThanMin || isHigherThanMax;
 };
 
+/**
+ * Adjust a range, along with an expected and actual number accosiated with the range.
+ * The goal is to make sure that the range starts from 0, so if it doesn't we need to adjust
+ * it so that it does.
+ *
+ * @param range the range to check
+ * @param optimumValue an optimum value within the range
+ * @param actualValue an actual value which should be in the range
+ * @returns {[[number, number], number, number]} The adjusted range starting from 0
+ */
 export const adjustRange = (
   range: [number, number],
   optimumValue: number,

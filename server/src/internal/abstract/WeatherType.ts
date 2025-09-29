@@ -11,14 +11,34 @@ export type DataPoint =
   | 'precipitation';
 
 abstract class WeatherType {
+  /**
+   * The range within which we would expect to find the data point
+   */
   abstract range: [number, number];
+  /**
+   * The name of the data point accosiated with this weather type
+   */
   abstract dataPoint: DataPoint;
 
+  /**
+   * For the specified weather type, return the average from the
+   * API response.
+   *
+   * @param weather
+   * @returns {number} the computed average from the specified weather data point
+   */
   getAverage(weather: WeatherAPIResponse): number {
     const { hourly } = weather;
     return average(hourly[this.dataPoint]);
   }
 
+  /**
+   * Perform the actual calculation of the ranking score
+   *
+   * @param optimal the number that best represents "good" conditions for the specified activity
+   * @param actual the number that is seen in reality
+   * @returns {number} the score based on the difference between the optimal and the actual
+   */
   calculateScore(optimal: number, actual: number): number {
     // I'm not aware of any formula to determine the optimum conditions
     // of a specific activity...

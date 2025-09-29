@@ -5,19 +5,49 @@ import { DataPoint } from './WeatherType';
 
 abstract class Activity {
   /**
-   * Optimum conditions
+   * Optimum temperature for this activity (°C)
    */
-  abstract temperature_2m: number; // °C
-  abstract wind_speed_10m: number; // km/h
-  abstract relative_humidity_2m: number; // %
-  abstract snowfall: number; // cm
-  abstract snow_depth: number; // m
-  abstract soil_moisture_1_to_3cm: number; // m³/m³
-  abstract precipitation: number; // mm
+  abstract temperature_2m: number;
+  /**
+   * Optimum wind speed for this activity (km/h)
+   */
+  abstract wind_speed_10m: number;
+  /**
+   * Optimum humidity for this activity (%)
+   */
+  abstract relative_humidity_2m: number;
+  /**
+   * Optimum snowfall for this activity (cm)
+   */
+  abstract snowfall: number;
+  /**
+   * Optimum snow depth for this activity (m)
+   */
+  abstract snow_depth: number;
+  /**
+   * Optimum soil moisture for this activity (m³/m³)
+   */
+  abstract soil_moisture_1_to_3cm: number;
+  /**
+   * Optimum precipitation for this activity (mm)
+   */
+  abstract precipitation: number;
 
+  /**
+   * Get recommendation data for this activity
+   *
+   * @param weather
+   * @returns {Recommendation} the recommendation data
+   */
   abstract getRecommendation(weather: WeatherAPIResponse): Recommendation;
 
-  calculateScore(weather: WeatherAPIResponse) {
+  /**
+   * Calculate the score based on the weather for this activity
+   *
+   * @param weather
+   * @returns {number} the score for the specified activity
+   */
+  calculateScore(weather: WeatherAPIResponse): number {
     const weatherTypes = Object.keys(weather.hourly)
       // We're not using time
       .filter((dataPoint) => dataPoint !== 'time')

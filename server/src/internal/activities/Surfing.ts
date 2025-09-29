@@ -9,9 +9,6 @@ import Activity from '../abstract/Activity';
  * based on weater conditions.
  */
 export class SURFING extends Activity {
-  /**
-   * Optimum conditions
-   */
   temperature_2m: number = 30; // °C
   wind_speed_10m: number = 35; // km/h
   relative_humidity_2m: number = 70; // %

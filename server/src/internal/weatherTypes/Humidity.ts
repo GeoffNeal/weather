@@ -1,6 +1,6 @@
-import WeatherType, { DataPoint } from '../abstract/WeatherType';
+import WeatherType from '../abstract/WeatherType';
 
 export class relative_humidity_2m extends WeatherType {
-  range: [number, number] = [0, 100]; // %
-  dataPoint: DataPoint = 'relative_humidity_2m';
+  range: WeatherType['range'] = [0, 100]; // %
+  dataPoint: WeatherType['dataPoint'] = 'relative_humidity_2m';
 }
