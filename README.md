@@ -12,11 +12,11 @@ The reason I did it this way rather than using a framework like NextJS is that i
 
 The FE is built in React and uses Apollo client to call the BE which is a GraphQL server and will be running on http://localhost:4000
 
-Both the server and client are compiled using separate webpack configs. The reason I took this approach was that it biundles everything into one file when it compiles the typescript, so I didn't need to put too much thought into making sure output files were output to the correct location and the paths matched up properly.
+Both the server and client are compiled using separate webpack configs. The reason I took this approach was that it bundles everything into one file when it compiles the typescript, so I didn't need to put too much thought into making sure output files were output to the correct location and the paths matched up properly.
 
 ## Approach
 
-I decided that the best way to provide different calculations based on the same data - while keeping it extensible - was to employ the factory pattern. So there is a class for each activity that adheres to an abstract class, ensuring that the call signature for all of them is the same, but we can provide different implementations for them for different calculations. It means we can add as many new activities as we like without affecting the implementation of the existing ones.
+I decided that the best way to provide different calculations based on the same data - while keeping it extensible - was to employ the factory pattern. So there is a class for each activity that adheres to an abstract class, ensuring that the call signature for all of them is the same, but we can provide different implementations for them for different calculations. It means we can add as many new activities as we like without affecting the implementation of the existing ones. I applied the same concept to the weather data points themselves, perhaps a bit overkill in retrospect but it means whenever we want to add a new data point we can just create a new class and specify an optimum value, and the calculation shouldn't need to be touched.
 
 My calculations are detailed in the `Tradeoffs` section.
 
@@ -80,13 +80,25 @@ On the plus side it should just be a matter of running `yarn start` so it's not 
 
 #### Calculations
 
-As far as I'm aware, there is no algorithm or formula that can calculate an accurate ranking for activities based on a few weather data points. So I've opted for something pretty basic and probably quite inaccurate...
+I'm not aware of any formula to determine the optimum conditions of a specific activity...
+So basically this is a completely arbitrary calculation based on what I think the values for these activities should `probably` be.
 
-For one thing I've only used 3 data points from the API, temperature, windspeed and humidity. I could have added more but didn't see the point as it likely wouldn't have improved the accuracy that much, and I didn't want to waste time on it that being the case.
+The steps are as follows:
 
-The way I've done it is just to take the average of all the data points provided and compare them to an optimum that I've arbitrarily decided on based on my own intuition, for example we'd assume that for skiing we wouldn't want temperatures of 40 degrees.
+- Establish a range that is relevant for each measurement
+  - For example snow_depth is measured in meters, so we're unlikely to find a scenario where we'd want 3m of snow. Therefore the range should be something like 0 - 2.
+- From here, we'd select a target within the range that we consider optimal for this activity.
+  - In the case of skiing for example we'd perhaps want something like 0.75.
+- Now we express this as a percentage. In this case we'd do 0.75/2 = 0.375 (or 37.5%)
+- So now we have the target, we need to see where the actual number falls. If the average snow_depth ends up being 0.5m then we know (using the same calculation) that this is equal to 25%.
+- With this we can calculate the difference: Math.abs(0.25 - 0.375) = 0.125
+  - The lower this number the better, as it means we are less distance from the target.
+- Because we want a score where a higher value is better than a lower one (better from a user's perspective) we invert the score using 1 - 0.125 = 0.875, which we can then multiply by 100 to give 87.5, which will be our score for this data point.
+- The sum of these scores (one for each weather data point) will be the total score.
 
-We can now compare the average to the optimum and record the distance between them. I've then just taken the minimum of this score and 100, from 100. So we'll have a score that is between 0 and 100 with 100 being the best and 0 being the worst.
+There's probably a better way to do this, but I have no idea what it is...
+
+For one thing I've only used a few data points from the API, temperature, windspeed and humidity and a few others. I could have added more but didn't see the point as it likely wouldn't have improved the accuracy that much, and I didn't want to waste time on it that being the case.
 
 #### Testing
 
