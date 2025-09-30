@@ -7,9 +7,13 @@ import styled from 'styled-components';
 const Input = styled.input`
   appearance: none;
   border: 0;
-  border-radius: var(--default-border-radius);
   padding: var(--default-padding);
+  margin: var(--default-margin);
   font-size: var(--font-size-md);
+
+  @media (min-width: 768px) {
+    border-radius: var(--default-border-radius);
+  }
 `;
 
 const Search: React.FC = () => {

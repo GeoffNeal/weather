@@ -7,6 +7,11 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-direction: column;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
 `;
 
 const Section = styled.section<{ bgColor: string }>`
@@ -15,6 +20,7 @@ const Section = styled.section<{ bgColor: string }>`
   align-items: center;
   justify-content: center;
   height: 100vh;
+  width: 100%;
   background-color: ${(props) => props.bgColor};
 `;
 
