@@ -102,7 +102,7 @@ For one thing I've only used a few data points from the API, temperature, windsp
 
 #### Testing
 
-Coverage could be better
+Testing is not as extensive as I'd have liked. I think given the tight timeframe I prioritised getting a working app.
 
 #### Styling
 
@@ -113,3 +113,5 @@ Styling is pretty basic, I've reused the global stylesheet from one of my other 
 I've actually provided the ability to specify the number of days to check over. But I didn't have time to implement that on the FE, so it just defaults to 7 days as that's what was specified.
 
 Likewise we can specify in the query which activities to get rankings for, I've just added all of them to the query but technically we can add and remove as required.
+
+Admittedly from the phrasing of the task I got the impression the FE was less of a priority. ("premium UX is a bonus")
