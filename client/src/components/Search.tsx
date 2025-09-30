@@ -22,7 +22,7 @@ const Search: React.FC = () => {
 
   return (
     <div>
-      <Input id="city" type="text" value={search} onChange={throttle(handleChange, 100)} />
+      <Input id="city" type="text" value={search} onChange={throttle(handleChange, 500)} />
     </div>
   );
 };

@@ -21,12 +21,6 @@ const typeDefs = `#graphql
         results: [Recommendation]!
     }
 
-    # Cartisan coordinates (latitude and longitude)
-    type Coordinates {
-        lat: Float!
-        lon: Float!
-    }
-
     # Provide the name of the city and the activities you want rankings for
     # as well as the number of days you want to check over
     input RecommendationsInput {

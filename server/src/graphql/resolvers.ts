@@ -2,6 +2,7 @@ import { ApolloContext } from '../../index';
 import type { Recommendation, Recommendations, Resolvers } from '../../generated/gql';
 import ActivityFactory from '../internal/factories/ActivityFactory';
 import { getErrorMessage } from '../utils';
+import { Coordinates } from '../../../types';
 
 const resolvers: Resolvers<ApolloContext> = {
   Query: {
@@ -21,24 +22,37 @@ const resolvers: Resolvers<ApolloContext> = {
 
         if (!results) return [];
 
-        const recommendations = results.map(
-          async ({ latitude: lat, longitude: lon, name: cityName, country_code: countryCode }) => {
-            const weather = await dataSources.weatherAPI.getWeatherOverDays(days, { lat, lon });
-            const activityList = activities.map((activity) => new ActivityFactory(activity).init());
-
-            const sortedList: Recommendation[] = activityList
-              .map((activity) => activity.getRecommendation(weather))
-              .sort((a, b) => {
-                if (a.ranking > b.ranking) return -1;
-                if (a.ranking < b.ranking) return 1;
-                return 0;
-              });
-
-            return { city: cityName, countryCode, results: sortedList };
-          }
+        // If more than one city is returned we want to add the coordinates
+        // to the weather API as comma separated values
+        const coords = results.reduce(
+          (acc, city) => {
+            const { latitude, longitude } = city;
+            const lat = `${acc.lat}${acc.lat ? ',' : ''}${latitude}`;
+            const lon = `${acc.lon}${acc.lon ? ',' : ''}${longitude}`;
+            return { lat, lon };
+          },
+          { lat: '', lon: '' } as Coordinates
         );
 
-        return Promise.all(recommendations);
+        const weather = await dataSources.weatherAPI.getWeatherOverDays(days, coords);
+        const activityList = activities.map((activity) => new ActivityFactory(activity).init());
+
+        // If only one city matches the name, the response from the
+        // weather API will not be an array.
+        const weatherAsArray = Array.isArray(weather) ? weather : [weather];
+
+        return weatherAsArray.map((cityWeather, index) => {
+          const { name: cityName, country_code: countryCode } = results[index];
+          const sortedList: Recommendation[] = activityList
+            .map((activity) => activity.getRecommendation(cityWeather))
+            .sort((a, b) => {
+              if (a.ranking > b.ranking) return -1;
+              if (a.ranking < b.ranking) return 1;
+              return 0;
+            });
+
+          return { city: cityName, countryCode, results: sortedList };
+        });
       } catch (e: unknown) {
         // Here we would probably want to do some logging to whatever
         // cloud provider we're running this instance in. For now I'm

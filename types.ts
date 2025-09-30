@@ -1,5 +1,10 @@
 import { Recommendation, Recommendations } from './server/generated/gql';
 
+export type Coordinates = {
+  lat: string;
+  lon: string;
+};
+
 type Units = {
   time: string;
   temperature_2m: string;
@@ -69,6 +74,8 @@ export type WeatherAPIResponse = {
   hourly_units: Units;
   hourly: Values;
 };
+
+export type WeatherAPIResponseList = WeatherAPIResponse[];
 
 /**
  * Response from the geocoding API

@@ -1,6 +1,5 @@
 import { RESTDataSource } from '@apollo/datasource-rest';
-import type { Coordinates } from '../../generated/gql';
-import type { WeatherAPIResponse } from '../../../types';
+import type { Coordinates, WeatherAPIResponse, WeatherAPIResponseList } from '../../../types';
 
 class WeatherAPI extends RESTDataSource {
   override baseURL = 'https://api.open-meteo.com/v1/';
@@ -11,16 +10,23 @@ class WeatherAPI extends RESTDataSource {
    *
    * @param days The number of days you want to get the weather conditions for
    * @param coordinates The location of the weather conditions
-   * @returns {Promise<WeatherAPIResponse>} A promise that resolves to the weather data
+   * @returns {Promise<WeatherAPIResponse | WeatherAPIResponseList>} A promise that resolves to the weather data
    */
-  getWeatherOverDays(days: string, coordinates: Coordinates): Promise<WeatherAPIResponse> {
+  getWeatherOverDays(
+    days: string,
+    coordinates: Coordinates
+  ): Promise<WeatherAPIResponse | WeatherAPIResponseList> {
     if (isNaN(parseInt(days, 10))) {
       throw new Error(`\`days\` must be a number but got: ${days}`);
     }
 
+    /**
+     * Depending on how many responses came back from the geocoding API
+     * lat and lon might be comma separated values
+     */
     const { lat, lon } = coordinates;
 
-    return this.get(
+    return this.get<WeatherAPIResponse | WeatherAPIResponseList>(
       `forecast?latitude=${encodeURIComponent(lat)}&longitude=${encodeURIComponent(lon)}&past_days=${encodeURIComponent(days)}&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m,snowfall,snow_depth,soil_moisture_1_to_3cm,precipitation`
     );
   }

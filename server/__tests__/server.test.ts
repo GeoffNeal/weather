@@ -28,14 +28,14 @@ const getRecommendations = `#graphql
 
 const input1 = {
   input: {
-    name: 'Paris',
+    name: 'Paris', // Berlin is returned in the response because it's in the stub
     activities: ['SKIING', 'SURFING'],
   },
 };
 
 const input2 = {
   input: {
-    name: 'Paris',
+    name: 'Paris', // Berlin is returned in the response because it's in the stub
     activities: ['INDOOR_SIGHTSEEING', 'OUTDOOR_SIGHTSEEING'],
     days: '10',
   },
@@ -46,8 +46,16 @@ const recommendationsQueryExpectedResponse1 = [
     city: 'Paris',
     countryCode: 'FR',
     results: [
-      { key: 'SKIING', label: 'Skiing', ranking: 57.28695728291317 },
-      { key: 'SURFING', label: 'Surfing', ranking: 47.9953606442577 },
+      { key: 'SKIING', label: 'Skiing', ranking: 56.27735260770975 },
+      { key: 'SURFING', label: 'Surfing', ranking: 47.20751133786848 },
+    ],
+  },
+  {
+    city: 'Berlin',
+    countryCode: 'DE',
+    results: [
+      { key: 'SURFING', label: 'Surfing', ranking: 36.18849206349206 },
+      { key: 'SKIING', label: 'Skiing', ranking: 34.35062358276644 },
     ],
   },
 ];
@@ -57,8 +65,16 @@ const recommendationsQueryExpectedResponse2 = [
     city: 'Paris',
     countryCode: 'FR',
     results: [
-      { key: 'OUTDOOR_SIGHTSEEING', label: 'Outdoor Sightseeing', ranking: 55.48513655462186 },
-      { key: 'INDOOR_SIGHTSEEING', label: 'Indoor Sightseeing', ranking: 54.220290616246494 },
+      { key: 'OUTDOOR_SIGHTSEEING', label: 'Outdoor Sightseeing', ranking: 53.71975623582767 },
+      { key: 'INDOOR_SIGHTSEEING', label: 'Indoor Sightseeing', ranking: 53.21068594104309 },
+    ],
+  },
+  {
+    city: 'Berlin',
+    countryCode: 'DE',
+    results: [
+      { key: 'OUTDOOR_SIGHTSEEING', label: 'Outdoor Sightseeing', ranking: 33.33134920634921 },
+      { key: 'INDOOR_SIGHTSEEING', label: 'Indoor Sightseeing', ranking: 28.585317460317462 },
     ],
   },
 ];
