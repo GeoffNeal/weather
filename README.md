@@ -80,8 +80,10 @@ On the plus side it should just be a matter of running `yarn start` so it's not 
 
 #### Calculations
 
-I'm not aware of any formula to determine the optimum conditions of a specific activity...
+I'm not aware of any formula to determine the optimum conditions of a specific activity.
 So basically this is a completely arbitrary calculation based on what I think the values for these activities should _probably_ be.
+
+It is unlikely to be accurate...
 
 The steps are as follows:
 
@@ -96,7 +98,7 @@ The steps are as follows:
 - Because we want a score where a higher value is better than a lower one (better from a user's perspective) we invert the score using 1 - 0.125 = 0.875, which we can then multiply by 100 to give 87.5, which will be our score for this data point.
 - The sum of these scores (one for each weather data point) will be the total score, which we can then divide by the number of scores to get the score out of 100.
 
-There's probably a better way to do this, but I have no idea what it is...
+There's probably a better way to do this, but I have no idea what it is.
 
 For one thing I've only used a few data points from the API, temperature, windspeed and humidity and a few others. I could have added more but didn't see the point as it likely wouldn't have improved the accuracy that much, and I didn't want to waste time on it that being the case.
 
