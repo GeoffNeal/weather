@@ -61,7 +61,7 @@ abstract class Activity implements IActivity {
       );
     });
 
-    return scores.reduce((acc, score) => acc + score, 0);
+    return scores.reduce((acc, score) => acc + score, 0) / scores.length;
   }
 }
 

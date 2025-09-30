@@ -11,7 +11,7 @@ describe('INDOOR_SIGHTSEEING Activity class', () => {
     expect(result).toStrictEqual({
       key: Activities.INDOOR_SIGHTSEEING,
       label: 'Indoor Sightseeing',
-      ranking: 379.5420343137255,
+      ranking: 54.220290616246494,
     });
   });
 });

@@ -94,7 +94,7 @@ The steps are as follows:
 - With this we can calculate the difference: Math.abs(0.25 - 0.375) = 0.125
   - The lower this number the better, as it means we are less distance from the target.
 - Because we want a score where a higher value is better than a lower one (better from a user's perspective) we invert the score using 1 - 0.125 = 0.875, which we can then multiply by 100 to give 87.5, which will be our score for this data point.
-- The sum of these scores (one for each weather data point) will be the total score.
+- The sum of these scores (one for each weather data point) will be the total score, which we can then divide by the number of scores to get the score out of 100.
 
 There's probably a better way to do this, but I have no idea what it is...
 
