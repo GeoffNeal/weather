@@ -71,7 +71,10 @@ const Results: React.FC = () => {
               <Recommendation key={result.key}>
                 <b>{i + 1}</b>
                 <p>{result.label}</p>
-                <span>{result.ranking.toFixed(2)}</span>
+                <span>
+                  <b>Score: </b>
+                  {result.ranking.toFixed(2)}
+                </span>
               </Recommendation>
             ))}
           </Details>
