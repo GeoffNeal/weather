@@ -1,16 +1,7 @@
-import { WeatherAPIResponse } from '../../dataSources/WeatherAPI';
+import type { DataPoint, IWeatherType, WeatherAPIResponse } from '../../../../types';
 import { adjustRange, average, isOutOfRange } from '../../utils';
 
-export type DataPoint =
-  | 'temperature_2m'
-  | 'wind_speed_10m'
-  | 'relative_humidity_2m'
-  | 'snowfall'
-  | 'snow_depth'
-  | 'soil_moisture_1_to_3cm'
-  | 'precipitation';
-
-abstract class WeatherType {
+abstract class WeatherType implements IWeatherType {
   /**
    * The range within which we would expect to find the data point
    */

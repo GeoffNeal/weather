@@ -81,14 +81,14 @@ On the plus side it should just be a matter of running `yarn start` so it's not 
 #### Calculations
 
 I'm not aware of any formula to determine the optimum conditions of a specific activity...
-So basically this is a completely arbitrary calculation based on what I think the values for these activities should `probably` be.
+So basically this is a completely arbitrary calculation based on what I think the values for these activities should _probably_ be.
 
 The steps are as follows:
 
 - Establish a range that is relevant for each measurement
   - For example snow_depth is measured in meters, so we're unlikely to find a scenario where we'd want 3m of snow. Therefore the range should be something like 0 - 2.
 - From here, we'd select a target within the range that we consider optimal for this activity.
-  - In the case of skiing for example we'd perhaps want something like 0.75.
+  - In the case of skiing for example we'd perhaps want something like 0.75 (I have no idea...)
 - Now we express this as a percentage. In this case we'd do 0.75/2 = 0.375 (or 37.5%)
 - So now we have the target, we need to see where the actual number falls. If the average snow_depth ends up being 0.5m then we know (using the same calculation) that this is equal to 25%.
 - With this we can calculate the difference: Math.abs(0.25 - 0.375) = 0.125
@@ -106,7 +106,7 @@ Coverage could be better
 
 #### Styling
 
-Styling is pretty basic, I've resused the global stylesheet from one of my other projects so there are a few unused varibales in there as well.
+Styling is pretty basic, I've reused the global stylesheet from one of my other projects so there are a few unused varibales in there as well.
 
 #### FE features
 

@@ -1,39 +1,6 @@
 import { RESTDataSource } from '@apollo/datasource-rest';
-import { Coordinates } from '../../generated/gql';
-
-export type Units = {
-  time: string;
-  temperature_2m: string;
-  relative_humidity_2m: string;
-  wind_speed_10m: string;
-  snowfall: string;
-  snow_depth: string;
-  soil_moisture_1_to_3cm: string;
-  precipitation: string;
-};
-
-export type Values = {
-  time: string[];
-  temperature_2m: number[];
-  relative_humidity_2m: number[];
-  wind_speed_10m: number[];
-  snowfall: number[];
-  snow_depth: number[];
-  soil_moisture_1_to_3cm: number[];
-  precipitation: number[];
-};
-
-export type WeatherAPIResponse = {
-  latitude: number;
-  longitude: number;
-  generationtime_ms: number;
-  utc_offset_seconds: number;
-  timezone: string;
-  timezone_abbreviation: string;
-  elevation: number;
-  hourly_units: Units;
-  hourly: Values;
-};
+import type { Coordinates } from '../../generated/gql';
+import type { WeatherAPIResponse } from '../../../types';
 
 class WeatherAPI extends RESTDataSource {
   override baseURL = 'https://api.open-meteo.com/v1/';

@@ -1,6 +1,6 @@
-import { CityResponse } from '../src/dataSources/GeocodingAPI';
+import { GeocodingAPIResponse } from '../../types';
 
-export const geocodeStub: CityResponse = {
+export const geocodeStub: GeocodingAPIResponse = {
   results: [
     {
       id: 2988507,

@@ -4,20 +4,7 @@ import { useQuery } from '@apollo/client/react';
 import { useAtom } from 'jotai';
 import styled from 'styled-components';
 import { searchAtom } from '../atoms/search';
-
-type RecommendationItem = {
-  city: string;
-  countryCode: string;
-  results: {
-    key: string;
-    label: string;
-    ranking: number;
-  }[];
-};
-
-type RecommendationsReponse = {
-  recommendations: RecommendationItem[];
-};
+import type { RecommendationsReponse } from '../../../types';
 
 const GET_RECOMMENDATIONS = gql`
   query GetRecommendations($input: RecommendationsInput!) {

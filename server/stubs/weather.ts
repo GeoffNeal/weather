@@ -1,4 +1,4 @@
-import { WeatherAPIResponse } from '../src/dataSources/WeatherAPI';
+import { WeatherAPIResponse } from '../../types';
 
 export const weatherStub: WeatherAPIResponse = {
   latitude: 52.52,

@@ -1,9 +1,8 @@
-import { Recommendation } from '../../../generated/gql';
-import { WeatherAPIResponse } from '../../dataSources/WeatherAPI';
+import type { DataPoint, IActivity, WeatherAPIResponse } from '../../../../types';
+import type { Recommendation } from '../../../generated/gql';
 import WeatherTypeFactory from '../factories/WeatherTypeFactory';
-import { DataPoint } from './WeatherType';
 
-abstract class Activity {
+abstract class Activity implements IActivity {
   /**
    * Optimum temperature for this activity (°C)
    */

@@ -1,5 +1,5 @@
+import type { WeatherAPIResponse } from '../../../../types';
 import { Recommendation, Activities } from '../../../generated/gql';
-import { WeatherAPIResponse } from '../../dataSources/WeatherAPI';
 import Activity from '../abstract/Activity';
 
 /**

@@ -1,4 +1,5 @@
-import WeatherType, { DataPoint } from '../abstract/WeatherType';
+import type { DataPoint } from '../../../../types';
+import WeatherType from '../abstract/WeatherType';
 import * as weatherTypes from '../weatherTypes';
 
 class WeatherTypeFactory {
